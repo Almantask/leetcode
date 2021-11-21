@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leetcode.Csharp", "Leetcode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leetcode.Csharp.Tests", "Leetcode.Csharp.Tests\Leetcode.Csharp.Tests.csproj", "{C61DC02E-8769-40D6-B104-0A7D1E2CE84E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leetcode.Csharp.Benchmarks", "Leetcode.Csharp.Benchmarks\Leetcode.Csharp.Benchmarks.csproj", "{7197AE30-9860-409B-B546-7F4F6E7BB9F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C61DC02E-8769-40D6-B104-0A7D1E2CE84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C61DC02E-8769-40D6-B104-0A7D1E2CE84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C61DC02E-8769-40D6-B104-0A7D1E2CE84E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7197AE30-9860-409B-B546-7F4F6E7BB9F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7197AE30-9860-409B-B546-7F4F6E7BB9F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7197AE30-9860-409B-B546-7F4F6E7BB9F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7197AE30-9860-409B-B546-7F4F6E7BB9F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
