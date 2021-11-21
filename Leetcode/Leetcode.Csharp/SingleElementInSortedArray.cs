@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Leetcode.Csharp
+﻿namespace Leetcode.Csharp
 {
     /// <summary>
     /// https://leetcode.com/problems/single-element-in-a-sorted-array/submissions/
@@ -50,12 +48,12 @@ namespace Leetcode.Csharp
 
             static int FindNonDuplicate(int[] numbers, int start, int end)
             {
-                if (start >= end) return numbers[start];
+                if (start == end) return numbers[start];
 
                 var mid = (start + end) / 2;
-                if (numbers[mid] != numbers[mid - 1] &&
-                   numbers[mid] != numbers[mid + 1]) return numbers[mid];
-               
+                var isEven = (end - mid) % 2 == 0;
+                if (isEven) mid++;
+
                 // A non duplicate shifts all numbers to left or right.
                 // If there is an equal to the right - that means we should search there
                 // And vice versa
@@ -63,36 +61,57 @@ namespace Leetcode.Csharp
                 int nextEnd;
                 int nextStart;
 
-                var isEven = (end - mid) % 2 == 0;
-                if (isEven)
+                if (numbers[mid] == numbers[mid - 1])
                 {
-                    if (numbers[mid] == numbers[mid - 1])
-                    {
-                        // Search in left 
-                        nextStart = start;
-                        nextEnd = mid;
-                    }
-                    else
-                    {
-                        // Search in right
-                        nextStart = mid;
-                        nextEnd = end;
-                    }
+                    // Search in right
+                    nextStart = mid + 1;
+                    nextEnd = end;
                 }
                 else
                 {
-                    if (numbers[mid] == numbers[mid - 1])
-                    {
-                        // Search in right
-                        nextStart = mid + 1;
-                        nextEnd = end;
-                    }
-                    else
-                    {
-                        // Search in left
-                        nextStart = start;
-                        nextEnd = mid - 1;
-                    }
+                    // Search in left
+                    nextStart = start;
+                    nextEnd = mid - 1;
+                }
+
+                return FindNonDuplicate(numbers, nextStart, nextEnd);
+            }
+        }
+
+        public static int SolveV4(int[] nums)
+        {
+            return FindNonDuplicate(nums.AsSpan(), 0, nums.Length - 1);
+
+            int FindNonDuplicate(Span<int> numbers, int start, int end)
+            {
+                if (start == end) return numbers[start];
+
+                var mid = (start + end) / 2;
+                var isEven = (end - mid) % 2 == 0;
+                if (isEven) mid++;
+
+                int nextEnd;
+                int nextStart;
+
+                if (numbers[mid] == numbers[mid - 1])
+                {
+                    PrepareToMoveRight();
+                }
+                else
+                {
+                    PrepareToMoveLeft();
+                }
+
+                void PrepareToMoveRight()
+                {
+                    nextStart = mid + 1;
+                    nextEnd = end;
+                }
+
+                void PrepareToMoveLeft()
+                {
+                    nextStart = start;
+                    nextEnd = mid - 1;
                 }
 
                 return FindNonDuplicate(numbers, nextStart, nextEnd);

@@ -33,6 +33,15 @@ namespace Leetcode.Csharp.Tests
             nonDuplicate.Should().Be(onlyNonDuplicate);
         }
 
+        [Theory]
+        [MemberData(nameof(ExpectedNonDuplicateSolutions))]
+        public void SolveV4_ReturnsNonDuplicate(int[] sortedArray, int onlyNonDuplicate)
+        {
+            var nonDuplicate = SingleElementInSortedArray.SolveV4(sortedArray);
+
+            nonDuplicate.Should().Be(onlyNonDuplicate);
+        }
+
         public static IEnumerable<object[]> ExpectedNonDuplicateSolutions
         {
             get
